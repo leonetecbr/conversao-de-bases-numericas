@@ -31,7 +31,7 @@ def octal(number):
         else:
             start = 0
         end = length - i
-        octal.append(str(convert(number[start:end])))
+        result.append(str(convert(number[start:end])))
         i += 3
 
     return int(''.join(reversed(result)))

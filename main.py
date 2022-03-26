@@ -8,6 +8,6 @@ while not (to == 'decimal' or to == 'octal'):
 
 
 if to == 'octal':
-    print(octal(num))
+    print(f'O número binário {num} é equivalente ao octal '+str(octal(num)))
 else:
-    print(convert(num))
+    print(f'O número binário {num} é equivalente ao decimal '+str(convert(num)))
