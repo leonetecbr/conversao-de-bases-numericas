@@ -35,3 +35,29 @@ def octal(number):
         i += 3
 
     return int(''.join(reversed(result)))
+
+
+def hexadecimal(number):
+    length = len(number)
+    result = []
+    i = 0
+    array = ['A', 'B', 'C', 'D', 'E', 'F']
+
+    while i < length:
+        start = length - i
+        if start >= 4:
+            start -= 4
+        else:
+            start = 0
+        end = length - i
+        num = convert(number[start:end])
+        if num > 9:
+            num = array[num - 10]
+        result.append(str(num))
+        i += 4
+
+    num_hex = ''.join(reversed(result))
+    while num_hex[0] == '0':
+        num_hex = num_hex[1:]
+
+    return num_hex
