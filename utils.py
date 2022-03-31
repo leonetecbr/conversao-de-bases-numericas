@@ -1,3 +1,15 @@
+from math import floor
+
+hexa = {
+    'A': 10,
+    'B': 11,
+    'C': 12,
+    'D': 13,
+    'E': 14,
+    'F': 15
+}
+
+
 def convert(number):
     """
     Converte o número binário em octal ou decimal
@@ -38,6 +50,11 @@ def octal(number):
 
 
 def hexadecimal(number):
+    """
+    Converte números binários em hexadecimal
+    :param number:string
+    :return :string
+    """
     length = len(number)
     result = []
     i = 0
@@ -61,3 +78,42 @@ def hexadecimal(number):
         num_hex = num_hex[1:]
 
     return num_hex
+
+
+def binario(num):
+    """
+    Converte decimal em binário
+    :param num:integer
+    :return :string
+    """
+    new_binary = []
+    num = int(num)
+
+    while num >= 2:
+        new_binary.append(str(num % 2))
+        num = floor(num / 2)
+
+    new_binary = str(num) + ''.join(reversed(new_binary))
+
+    return new_binary
+
+
+def binario_size(num, tamanho=4):
+    """
+    Converte octal e hexadecimal em binário
+    :param num:string
+    :param tamanho:integer
+    :return :string
+    """
+    binary = ''
+    for n in num:
+        if not n.isdigit():
+            n = hexa[n]
+        new_binary = binario(n)
+
+        while len(new_binary) < tamanho:
+            new_binary = '0' + new_binary
+
+        binary += new_binary
+
+    return binary
